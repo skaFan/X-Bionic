@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FlashActivity" >
+
+    
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:background="#FFFFFF"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progress_login" />
+    <ImageView android:id="@+id/iv_flash"
+        android:scaleType="centerCrop"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:contentDescription="@null"
+        android:src="@drawable/demo1"/>
+
+</RelativeLayout>

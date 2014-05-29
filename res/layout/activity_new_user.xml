@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/allbackground"
+    tools:context=".NewUserActivity" >
+    
+    
+     <RelativeLayout
+         android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_back" >
+        
+          <ImageButton
+            android:id="@+id/ib_user_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back" 
+            android:contentDescription="@null"
+            android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/newuserregister"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:scaleX="0.80" >
+
+        <TextView
+            android:id="@+id/tv_sina_reg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/loginstyle"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/snreg"
+            android:textColor="#F0F0F0"
+            android:textScaleX="1.25"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_qq_reg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/loginstyle"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/qqreg"
+            android:textColor="#F0F0F0"
+            android:textScaleX="1.25"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_mobile_reg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/loginstyle"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/mobreg"
+            android:textColor="#F0F0F0"
+            android:textScaleX="1.25"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</RelativeLayout>

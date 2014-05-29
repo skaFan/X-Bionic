@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/allbackground"
+    tools:context=".QQloginActivity" >
+    
+    <RelativeLayout android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/tv_zx"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_sq"
+            android:layout_marginTop="20dp"
+            android:layout_alignLeft="@+id/tv_sq"
+            android:background="@drawable/qqsinabutton"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/qqzx"
+            android:textSize="15sp" 
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/tv_sq"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/qqsinabutton"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/qqsq"
+            android:textSize="15sp" 
+            android:textColor="#FFFFFF"/>
+        
+        </RelativeLayout>
+
+</RelativeLayout>

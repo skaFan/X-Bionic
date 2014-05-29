@@ -1,0 +1,106 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/peoplebackground"
+    android:orientation="vertical"
+    tools:context=".BlLoginActivity" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_back" >
+
+        <ImageButton
+            android:id="@+id/ib_bl_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back" 
+            android:contentDescription="@null"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tv_dlbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingBottom="13dp"
+            android:paddingTop="13dp"
+            android:text="@string/login"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/bldsc"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/bl_user"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/enterusername"
+            android:drawableLeft="@drawable/personpicture"
+            android:drawablePadding="15dp"
+            android:hint="@string/username"
+            android:paddingLeft="15dp"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/bl_password"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/enterusername"
+            android:drawableLeft="@drawable/keypicture"
+            android:drawablePadding="21dp"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingLeft="15dp"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/bl_enter"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/blenter"
+            android:text="@string/blenter" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="25dp"
+            android:layout_weight="3" >
+
+            <Button
+                android:id="@+id/bl_forgetpsw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/forgetpsw"
+                android:text="@string/forgetpsw"
+                android:textSize="20sp"
+                android:textColor="@drawable/textcolor" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

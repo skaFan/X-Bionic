@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/allbackground"
+    tools:context=".SinaLoginActivity" >
+
+ >
+
+        <Button
+            android:id="@+id/ib_xlwbrz"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/qqsinabutton"
+            android:contentDescription="@null"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+             android:layout_centerHorizontal="true"
+            android:text="@string/xlrz"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/ib_dl"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/ib_xlwbrz"
+            android:background="@drawable/qqsinabutton"
+            android:contentDescription="@null"
+             android:layout_centerHorizontal="true"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:text="@string/xldl"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/ib_xlzx"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+             android:layout_centerHorizontal="true"
+            android:layout_below="@+id/ib_dl"
+            android:background="@drawable/qqsinabutton"
+            android:contentDescription="@null"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:text="@string/xlzx"
+            android:textSize="15sp" />
+        <TextView android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="#00000000"
+            android:textColor="#d7d7d7"
+            android:text="@string/description"
+            android:layout_below="@+id/ib_xlzx"/>
+    
+
+</RelativeLayout>
