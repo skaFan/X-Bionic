@@ -74,9 +74,13 @@
             android:name="com.ska.x_bionic.ui.DrawerActivity"
             android:label="@string/title_activity_drawer" >
         </activity>
-          <activity
-            android:name="com.ska.x_bionic.ui.ProductListActivity"
+        <activity
+            android:name="com.ska.x_bionic.ui.ProductMainActivity"
             android:label="@string/title_activity_drawer" >
+        </activity>
+        <activity
+            android:name="com.ska.x_bionic.ui.ProductListActivity"
+            android:label="@string/title_activity_detai_product_list" >
         </activity>
     </application>
 

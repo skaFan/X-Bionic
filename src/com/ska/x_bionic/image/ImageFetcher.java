@@ -1,4 +1,4 @@
-package com.ska.x_bionic.mage;
+package com.ska.x_bionic.image;
 
 import java.io.File;
 import java.io.FileNotFoundException;

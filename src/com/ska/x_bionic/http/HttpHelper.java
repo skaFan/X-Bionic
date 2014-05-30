@@ -21,8 +21,8 @@ import android.util.Log;
  * 
  */
 public class HttpHelper {
-	private static final String DOMAIN_URL = "http://bulo2bulo.com:8080/mobile/api/";
-	private static final String DOMAIN_URL_IMAGE="http://bulo2bulo.com:8080/";
+	public static final String DOMAIN_URL = "http://bulo2bulo.com:8080/mobile/api/";
+	public static final String DOMAIN_URL_IMAGE="http://bulo2bulo.com:8080/";
 
 	private static final String LOG_HTTP_POST_INFO = "REQUEST";
 	private static final String LOG_HTTP_GET_ERROR = "com.imcore.common.http.GetError";

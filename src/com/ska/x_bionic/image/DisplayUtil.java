@@ -1,11 +1,11 @@
-package com.ska.x_bionic.mage;
+package com.ska.x_bionic.image;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
 
 public class DisplayUtil {
 	/**
-	 * ��ȡ��Ļ��ȵ������?
+	 * ��ȡ��Ļ��ȵ������?
 	 * 
 	 * @param context
 	 * @return

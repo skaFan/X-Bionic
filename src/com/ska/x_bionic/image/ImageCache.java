@@ -1,4 +1,4 @@
-package com.ska.x_bionic.mage;
+package com.ska.x_bionic.image;
 
 import java.io.File;
 
@@ -59,7 +59,7 @@ public class ImageCache {
 	}
 
 	/**
-	 * 从缓存中获取key 指定的图片对�?
+	 * 从缓存中获取key 指定的图片对�?
 	 * 
 	 * @param key
 	 * @return
@@ -69,7 +69,7 @@ public class ImageCache {
 	}
 
 	/**
-	 * 从缓存中获取key 指定的图片对象，并且指定缩放之后的尺�?
+	 * 从缓存中获取key 指定的图片对象，并且指定缩放之后的尺�?
 	 * 
 	 * @param key
 	 * @param reqWidth
@@ -86,12 +86,12 @@ public class ImageCache {
 		return this.getBitmapFromLocal(key);
 	}
 
-	// 从本地存储设备中读取key指定的图�?
+	// 从本地存储设备中读取key指定的图�?
 	private Bitmap getBitmapFromLocal(String key) {
 		return this.getBitmapFromLocal(key, 0, 0);
 	}
 
-	// 从本地存储设备中读取key指定的图�?同时指定缩放后的宽高尺寸
+	// 从本地存储设备中读取key指定的图�?同时指定缩放后的宽高尺寸
 	private Bitmap getBitmapFromLocal(String key, int reqWidth, int reqHeight) {
 		Bitmap bitmap = null;
 		if (reqWidth != 0 && reqHeight != 0) {

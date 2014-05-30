@@ -48,5 +48,6 @@
     <string name="story">达人故事</string>
     <string name="activity">X 的活动</string>
     <string name="Xdescription">X 的介绍</string>
+    <string name="title_activity_detai_product_list">DetaiProductListActivity</string>
 
 </resources>

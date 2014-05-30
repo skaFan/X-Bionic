@@ -33,7 +33,7 @@ public class MainFragment extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.tv_buy:
-			Intent intent = new Intent(getActivity(), ProductListActivity.class);
+			Intent intent = new Intent(getActivity(), ProductMainActivity.class);
 			startActivity(intent);
 			break;
 		case R.id.tv_story:
