@@ -43,8 +43,8 @@ public class DrawerActivity extends ActionBarActivity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_drawer);
 		functionList();
-		ActionBar actionBar = getSupportActionBar();
-		actionBar.hide();
+		   ActionBar actionBar = getSupportActionBar();
+			actionBar.hide();
 	}
 	
 	
@@ -87,7 +87,7 @@ public class DrawerActivity extends ActionBarActivity implements OnClickListener
 				Intent intent = null;
 				switch (position) {
 				case 3:
-					intent = new Intent(DrawerActivity.this, LoginActivity.class);
+					intent = new Intent(DrawerActivity.this, RegisterVipActivity.class);
 					startActivity(intent);
 					break;
 

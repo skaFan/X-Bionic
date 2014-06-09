@@ -1,6 +1,6 @@
 package com.ska.x_bionic.ui;
 
-import java.util.ArrayList;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -20,11 +19,6 @@ import com.ska.x_bionic.R;
 
 public class MainActivity extends DrawerActivity{
 
-//	private DrawerLayout mDrawerLayout;
-//	private ActionBarDrawerToggle mDrawerToggle;
-//	private ListView mDrawerList;
-//	private List<String> list;
-//	private ImageView ivList, ivSearch;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +27,7 @@ public class MainActivity extends DrawerActivity{
 	//	functionList();
         ivList=(ImageView)findViewById(R.id.iv_list);
         ivList.setOnClickListener(this);
+     
 		initDrawerLayout();
 		getSupportFragmentManager().beginTransaction().add(R.id.main_content, new MainFragment()).commit();
 
@@ -47,7 +42,7 @@ public class MainActivity extends DrawerActivity{
 		mDrawerList.setAdapter(new MyAdapter());
 		mDrawerList.setOnItemClickListener(onItemClickListener);
 		initializeDrawerListener();
-		Log.i("111", String.valueOf(list.size()));
+		//Log.i("111", String.valueOf(list.size()));
 
 	}
 

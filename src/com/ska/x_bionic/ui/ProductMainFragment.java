@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -56,6 +57,7 @@ public class ProductMainFragment extends Fragment {
 
 		new getProductList().execute(100001);
 		new getProductList().execute(100002);
+		
 		mExpandableListView.setAdapter(new mExpandableListViewAdapt());
 		mExpandableListView.setOnGroupClickListener(onGroupClickListener);
 
@@ -141,6 +143,11 @@ public class ProductMainFragment extends Fragment {
 
 	}
 
+	
+	
+	
+	
+	
 	class mExpandableListViewAdapt extends BaseExpandableListAdapter {
 
 		@Override
@@ -235,8 +242,15 @@ public class ProductMainFragment extends Fragment {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
 						int arg2, long arg3) {
-					childList.get(groupId).get(arg2).getId();
+				int	ProductId= childList.get(groupId).get(arg2).getId();
+				Log.i("IDDD", ProductId+"");
 					Intent intent = new Intent(getActivity(),ProductListActivity.class);
+					Bundle bundle = new Bundle();
+					bundle.putInt("ProductId", ProductId);
+					int listid=100001+groupId;
+					bundle.putInt("ListId",listid);
+					Log.i("ididididid", listid+"");
+					intent.putExtras(bundle);
 					startActivity(intent);
 				}
 			});
@@ -247,6 +261,22 @@ public class ProductMainFragment extends Fragment {
 			GridView mGridView;
 		}
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		class ChildViewAdapt extends BaseAdapter {
 			private int groupPosition;
 			 

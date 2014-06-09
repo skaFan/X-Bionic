@@ -4,7 +4,6 @@
     android:layout_height="150dp"
     android:orientation="horizontal" 
     android:background="@drawable/table_host">
-
     <ImageView
         android:id="@+id/iv_headview"
         android:layout_width="wrap_content"

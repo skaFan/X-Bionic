@@ -15,12 +15,15 @@
     <string name="title_activity_qqlogin">QQloginActivity</string>
     <string name="qqsq">授  权</string>
     <string name="qqzx">注销</string>
+    <string name="blpf">部落平方</string>
     <string name="title_activity_sina_login">SinaLoginActivity</string>
     <string name="xlrz">微博认证OAUTH2.0</string>
     <string name="xldl">单击登陆sso</string>
     <string name="xlzx">注销</string>
+    <string name="xintroduction">X的介绍</string>
     <string name="title_activity_bl_login">BlLoginActivity</string>
     <string name="login">登录</string>
+    <string name="drsq">达人申请</string>
     <string name="newuserregister">注册</string>
     <string name="bldsc">无限增值服务应用，欢迎您！</string>
     <string name="blenter">进入部落</string>
@@ -45,9 +48,14 @@
     <string name="drawer_close">drawer_close</string>
     <string name="title_activity_drawer">DrawerActivity</string>
     <string name="buy">产品购买</string>
+    <string name="flss">分类与搜索</string>
     <string name="story">达人故事</string>
     <string name="activity">X 的活动</string>
     <string name="Xdescription">X 的介绍</string>
-    <string name="title_activity_detai_product_list">DetaiProductListActivity</string>
+    <string name="title_activity_detai_product_list">ProductListActivity</string>
+    <string name="title_activity_register_vipctivity">RegisterVipctivity</string>
+    <string name="title_activity_activity">ActivityActivity</string>
+    <string name="title_activity_product_detail">ProductDetailActivity</string>
+    <string name="title_activity_buy_and_info">BuyAndInfoActivity</string>
 
 </resources>

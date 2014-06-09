@@ -10,7 +10,9 @@ import java.lang.ref.WeakReference;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.ViewConfiguration;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import com.ska.x_bionic.http.HttpHelper;
 
@@ -49,6 +51,7 @@ public class ImageFetcher {
 		view.setTag(weakTask);
 		task.execute();
 	}
+	
 
 	// 图片下载异步任务内部�?
 	private class ImageWorkerTask extends AsyncTask<Void, Void, Boolean> {
@@ -101,7 +104,7 @@ public class ImageFetcher {
 	 * @param url
 	 * @return 返回true表示图片下载成功
 	 */
-	public boolean downLoadImage(String url) {
+	public static boolean downLoadImage(String url) {
 		File imageFile = new File(StorageHelper.getAppImageDir(),
 				String.valueOf(url.hashCode()));
 		InputStream is = null;
