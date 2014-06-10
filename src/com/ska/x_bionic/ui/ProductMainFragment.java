@@ -38,7 +38,7 @@ public class ProductMainFragment extends Fragment {
 	private ExpandableListView mExpandableListView;
 	private List<Integer> groupList;
 	private List<ChildProductList> list;
-//	private List<ChildProductList> list2;
+	// private List<ChildProductList> list2;
 
 	private List<List<ChildProductList>> childList;
 	private ProgressDialog pd;
@@ -57,15 +57,15 @@ public class ProductMainFragment extends Fragment {
 
 		new getProductList().execute(100001);
 		new getProductList().execute(100002);
-		
+
 		mExpandableListView.setAdapter(new mExpandableListViewAdapt());
 		mExpandableListView.setOnGroupClickListener(onGroupClickListener);
 
 		return view;
 	}
-	
+
 	private OnGroupClickListener onGroupClickListener = new OnGroupClickListener() {
-		
+
 		@Override
 		public boolean onGroupClick(ExpandableListView parent, View v,
 				int groupPosition, long id) {
@@ -75,7 +75,7 @@ public class ProductMainFragment extends Fragment {
 				if (i == groupPosition) {
 					if (mExpandableListView.isGroupExpanded(groupPosition)) {
 						mExpandableListView.collapseGroup(groupPosition);
-					}else {
+					} else {
 						mExpandableListView.expandGroup(groupPosition);
 					}
 				} else {
@@ -143,11 +143,6 @@ public class ProductMainFragment extends Fragment {
 
 	}
 
-	
-	
-	
-	
-	
 	class mExpandableListViewAdapt extends BaseExpandableListAdapter {
 
 		@Override
@@ -226,30 +221,31 @@ public class ProductMainFragment extends Fragment {
 		public View getChildView(int groupPosition, int childPosition,
 				boolean isLastChild, View convertView, ViewGroup parent) {
 			View view = convertView;
-			 ChildViewHolder cvh = null;
-			 if (view == null) {
-			view = getActivity().getLayoutInflater().inflate(
-					R.layout.view_expendview_child, null);
-			 cvh = new ChildViewHolder();
-			cvh.mGridView  = (GridView) view.findViewById(R.id.gv_product);
-			 view.setTag(cvh);
-			 } else {
-			 cvh = (ChildViewHolder) view.getTag();
-			 }
-			 cvh.mGridView.setAdapter(new ChildViewAdapt(groupPosition));
-			 cvh.mGridView.setOnItemClickListener(new OnItemClickListener() {
+			ChildViewHolder cvh = null;
+			if (view == null) {
+				view = getActivity().getLayoutInflater().inflate(
+						R.layout.view_expendview_child, null);
+				cvh = new ChildViewHolder();
+				cvh.mGridView = (GridView) view.findViewById(R.id.gv_product);
+				view.setTag(cvh);
+			} else {
+				cvh = (ChildViewHolder) view.getTag();
+			}
+			cvh.mGridView.setAdapter(new ChildViewAdapt(groupPosition));
+			cvh.mGridView.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1,
 						int arg2, long arg3) {
-				int	ProductId= childList.get(groupId).get(arg2).getId();
-				Log.i("IDDD", ProductId+"");
-					Intent intent = new Intent(getActivity(),ProductListActivity.class);
+					int ProductId = childList.get(groupId).get(arg2).getId();
+					Log.i("IDDD", ProductId + "");
+					Intent intent = new Intent(getActivity(),
+							ProductListActivity.class);
 					Bundle bundle = new Bundle();
 					bundle.putInt("ProductId", ProductId);
-					int listid=100001+groupId;
-					bundle.putInt("ListId",listid);
-					Log.i("ididididid", listid+"");
+					int listid = 100001 + groupId;
+					bundle.putInt("ListId", listid);
+					Log.i("ididididid", listid + "");
 					intent.putExtras(bundle);
 					startActivity(intent);
 				}
@@ -261,25 +257,8 @@ public class ProductMainFragment extends Fragment {
 			GridView mGridView;
 		}
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		class ChildViewAdapt extends BaseAdapter {
 			private int groupPosition;
-			 
 
 			ChildViewAdapt(int groupPosition) {
 				this.groupPosition = groupPosition;
@@ -306,9 +285,9 @@ public class ProductMainFragment extends Fragment {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
 				View view = convertView;
-				
+
 				GvViewHolder gvv = null;
-				
+
 				if (view == null) {
 					view = getActivity().getLayoutInflater().inflate(
 							R.layout.view_expendview_child_item, null);
@@ -328,11 +307,9 @@ public class ProductMainFragment extends Fragment {
 								+ childList.get(groupPosition).get(position)
 										.getImageUrl() + "_L.png",
 						gvv.mImageView);
-				
-				
+
 				gvv.mTextView.setText(childList.get(groupPosition)
 						.get(position).getName());
-				
 
 				return view;
 			}

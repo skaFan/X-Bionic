@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,10 +20,13 @@ import android.widget.ImageButton;
 
 
 import com.ska.x_bionic.R;
+import com.ska.x_bionic.application.MyApplication;
 import com.ska.x_bionic.http.HttpHelper;
 import com.ska.x_bionic.http.RequestEntity;
 import com.ska.x_bionic.http.ResponseJsonEntity;
+import com.ska.x_bionic.model.User;
 import com.ska.x_bionic.util.ConnectivityUtil;
+import com.ska.x_bionic.util.JsonUtil;
 import com.ska.x_bionic.util.TextUtil;
 import com.ska.x_bionic.util.ToastUtil;
 
@@ -101,7 +105,7 @@ public class BlLoginActivity extends Activity implements OnClickListener{
 		
 		
 	}
-	 class Task extends AsyncTask<Void, Void, String>{
+	 class Task extends AsyncTask<Void, Void, Integer>{
 		 private String mUsername;
 		 private String mPassword;
 		 
@@ -118,7 +122,8 @@ public class BlLoginActivity extends Activity implements OnClickListener{
 		}
 
 		@Override
-		protected String doInBackground(Void... params) {
+		protected Integer doInBackground(Void... params) {
+			ResponseJsonEntity responseEntity = null;
 			String url = "passport/login.do";
 			Map<String,Object> map = new HashMap<String, Object>();
 			map.put("phoneNumber", blUser.getText().toString());
@@ -129,22 +134,43 @@ public class BlLoginActivity extends Activity implements OnClickListener{
 			   
 			try {
 				jason = HttpHelper.execute(entity);
+				 responseEntity=ResponseJsonEntity.fromJSON(jason);
+				if(responseEntity.getStatus()==200){
+					String data = responseEntity.getData();
+					User user = JsonUtil.toObject(data, User.class);
+					MyApplication.addUser(user);
+					MyApplication.token=user.token;
+					MyApplication.userId=user.id;
+					SharedPreferences preferences = getSharedPreferences(
+							"User", 0);
+					SharedPreferences.Editor editor = preferences.edit();
+					editor.putString("phoneNumber", user.displayName);
+					editor.putString("token", user.token);
+					editor.commit();
+					
+				}
+				else {
+					AlertDialog.Builder builder = new AlertDialog.Builder(
+							BlLoginActivity.this);
+					builder.setTitle("X-bionic").setMessage("网络解析错误...")
+							.setPositiveButton("确定", null).create().show();
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			Log.i("jason", jason);
-			return jason;
+			return responseEntity.getStatus();
 		}
 		
 		@Override
-		protected void onPostExecute(String result) {
+		protected void onPostExecute(Integer result) {
 			pd.dismiss();
-			if(TextUtil.isEmptyString(result)){
-				ToastUtil.showToast(BlLoginActivity.this, "输入有误");
-			}
-			ResponseJsonEntity responseEntity=ResponseJsonEntity.fromJSON(result);
-			if(responseEntity.getStatus()==200){
+//			if(TextUtil.isEmptyString(result)){
+//				ToastUtil.showToast(BlLoginActivity.this, "输入有误");
+//			}
+			
+			if(result==200){
 				SharedPreferences sp = getSharedPreferences("user", 0);
 				if(!sp.getString("userName", "").equals(mUsername)){
 					SharedPreferences.Editor editor = sp.edit();
