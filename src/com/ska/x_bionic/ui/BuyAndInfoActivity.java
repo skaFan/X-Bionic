@@ -71,7 +71,7 @@ public class BuyAndInfoActivity extends Activity implements
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(BuyAndInfoActivity.this,ProductListActivity.class);
+				Intent intent = new Intent(BuyAndInfoActivity.this,ProductMainActivity.class);
 				startActivity(intent);
 			}});
 		new GetShoppingCar().execute();
