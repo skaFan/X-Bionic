@@ -9,6 +9,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,12 +17,14 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.ska.x_bionic.R;
+import com.ska.x_bionic.application.MyApplication;
 /**
  *此程序中有用侧拉的都继承此类，此类包含侧拉的功能代码，功能都可写这
  * @author DELL-CCC
@@ -35,12 +38,15 @@ public class DrawerActivity extends ActionBarActivity implements OnClickListener
 	protected ActionBarDrawerToggle mDrawerToggle;
 	protected ListView mDrawerList;
 	protected List<String> list;
+	public static Button btcount;
 	protected ImageView ivList, ivSearch;
 	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Log.i("carList1111222", MyApplication.shopingCarProNum+"");
+
 		setContentView(R.layout.activity_drawer);
 		functionList();
 		   ActionBar actionBar = getSupportActionBar();
@@ -73,6 +79,11 @@ public class DrawerActivity extends ActionBarActivity implements OnClickListener
 				TextView textView = (TextView) view
 						.findViewById(R.id.tv_navi_item_text);
 				textView.setText(list.get(position));
+				if(position == 4) {
+					btcount = (Button) view.findViewById(R.id.bt_countproduct);
+					btcount.setBackgroundResource(R.drawable.user_shoppingcart);
+					btcount.setText(String.valueOf(MyApplication.shopingCarProNum));
+				}
 				return view;
 			}
 		}
@@ -84,11 +95,15 @@ public class DrawerActivity extends ActionBarActivity implements OnClickListener
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
-				Intent intent = null;
+				
 				switch (position) {
 				case 3:
-					intent = new Intent(DrawerActivity.this, RegisterVipActivity.class);
+					Intent intent = new Intent(DrawerActivity.this, RegisterVipActivity.class);
 					startActivity(intent);
+					break;
+				case 5:
+					Intent intent2 = new Intent(DrawerActivity.this, BuyAndInfoActivity.class);
+					startActivity(intent2);
 					break;
 
 				default:

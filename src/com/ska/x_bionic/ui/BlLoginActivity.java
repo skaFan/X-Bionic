@@ -1,6 +1,7 @@
 package com.ska.x_bionic.ui;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
@@ -22,8 +23,13 @@ import android.widget.ImageButton;
 import com.ska.x_bionic.R;
 import com.ska.x_bionic.application.MyApplication;
 import com.ska.x_bionic.http.HttpHelper;
+import com.ska.x_bionic.http.HttpMethod;
 import com.ska.x_bionic.http.RequestEntity;
 import com.ska.x_bionic.http.ResponseJsonEntity;
+import com.ska.x_bionic.model.ShoppingCarProduct;
+import com.ska.x_bionic.model.Shoppingcar;
+import com.ska.x_bionic.model.ShoppingcarSysColor;
+import com.ska.x_bionic.model.ShoppingcarSysSize;
 import com.ska.x_bionic.model.User;
 import com.ska.x_bionic.util.ConnectivityUtil;
 import com.ska.x_bionic.util.JsonUtil;
@@ -35,6 +41,8 @@ public class BlLoginActivity extends Activity implements OnClickListener{
 	private EditText blUser,blPsw;
 	private Button btFrogetPsw,blEnter;
 	private ProgressDialog pd;
+	private List<Shoppingcar> carList;
+
 	
 	
 	
@@ -141,6 +149,9 @@ public class BlLoginActivity extends Activity implements OnClickListener{
 					MyApplication.addUser(user);
 					MyApplication.token=user.token;
 					MyApplication.userId=user.id;
+					Log.i("userid", MyApplication.userId+"");
+					Log.i("token", MyApplication.token);
+
 					SharedPreferences preferences = getSharedPreferences(
 							"User", 0);
 					SharedPreferences.Editor editor = preferences.edit();
@@ -178,10 +189,8 @@ public class BlLoginActivity extends Activity implements OnClickListener{
 					editor.putString("passWord", mPassword);
 					editor.commit();
 				}
-				
-				Intent intent = new Intent(BlLoginActivity.this, MainActivity.class);
-			     startActivity(intent);
-				finish();
+				new GetProductCount().execute();
+			
 				
 			}
 			else{
@@ -191,6 +200,43 @@ public class BlLoginActivity extends Activity implements OnClickListener{
 				blPsw.requestFocus();
 			}
 			
+			super.onPostExecute(result);
+		}
+		 
+	 }
+	 
+	 class GetProductCount extends AsyncTask<Void, Void, Void>{
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			String url = "shoppingcart/list.do";
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("token", MyApplication.token);
+			map.put("userId", MyApplication.userId);
+			RequestEntity entity = new RequestEntity(url, HttpMethod.POST, map);
+			String json = null;
+			try {
+				json = HttpHelper.execute(entity);
+				ResponseJsonEntity jsonEntity = ResponseJsonEntity
+						.fromJSON(json);
+				if (jsonEntity.getStatus() == 200) {
+					String data = jsonEntity.getData();
+					carList = JsonUtil.toObjectList(data, Shoppingcar.class);
+					
+
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+		}
+		@Override
+		protected void onPostExecute(Void result) {
+			MyApplication.shopingCarProNum=carList.size();
+			Intent intent = new Intent(BlLoginActivity.this, MainActivity.class);
+		     startActivity(intent);
+			finish();
 			super.onPostExecute(result);
 		}
 		 

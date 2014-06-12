@@ -160,7 +160,7 @@ public class MainActivity extends DrawerActivity{
 			// 设置对话框标题
 			isExit.setTitle("系统提示");
 			// 设置对话框消息
-			isExit.setMessage("确定要退出吗");
+			isExit.setMessage("返回到登录界面");
 			// 添加选择按钮并注册监听
 			isExit.setButton("确定", listener);
 			isExit.setButton2("取消", listener);

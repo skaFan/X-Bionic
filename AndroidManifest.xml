@@ -98,7 +98,8 @@
         </activity>
         <activity
             android:name="com.ska.x_bionic.ui.BuyAndInfoActivity"
-            android:label="@string/title_activity_buy_and_info" >
+            android:label="@string/title_activity_buy_and_info"
+            android:theme="@android:style/Theme.Light.NoTitleBar">
         </activity>
     </application>
 

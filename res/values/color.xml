@@ -3,4 +3,5 @@
     <color name="loginhelp_selected">#099DF7</color>
 	<color name="loginhelp_unselected">#FFFFFF</color>
      <color name="demo">#E84111</color>
+     <color name="buy">#01FA01</color>
 </resources>
