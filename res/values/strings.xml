@@ -58,5 +58,6 @@
     <string name="title_activity_activity">ActivityActivity</string>
     <string name="title_activity_product_detail">ProductDetailActivity</string>
     <string name="title_activity_buy_and_info">BuyAndInfoActivity</string>
+    <string name="title_activity_award">AwardActivity</string>
 
 </resources>

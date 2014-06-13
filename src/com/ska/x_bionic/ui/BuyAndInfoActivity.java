@@ -49,7 +49,8 @@ public class BuyAndInfoActivity extends Activity implements
 	private int Carposition;
 	private int status, sum = 0;;
 	private Myadapter adapter;
-	private ImageButton ibBack;
+	private ImageButton ibBack,ibEdit;
+	private int flag = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class BuyAndInfoActivity extends Activity implements
 		setContentView(R.layout.activity_buy_and_info);
 		mListView = (ListView) findViewById(R.id.lv_shopingcar);
 		ibBack = (ImageButton) findViewById(R.id.ib_bl_back);
+		ibEdit=(ImageButton)findViewById(R.id.ib_write);
 		ibBack.setOnClickListener(new android.view.View.OnClickListener() {
 
 			@Override
@@ -97,6 +99,7 @@ public class BuyAndInfoActivity extends Activity implements
 				if (jsonEntity.getStatus() == 200) {
 					String data = jsonEntity.getData();
 					carList = JsonUtil.toObjectList(data, Shoppingcar.class);
+					Log.i("carList......",carList.size()+"");
 					for (int i = 0; i < carList.size(); i++) {
 						ShoppingCarProduct product = JsonUtil.toObject(
 								carList.get(i).product,
@@ -125,6 +128,7 @@ public class BuyAndInfoActivity extends Activity implements
 		protected void onPostExecute(Void result) {
 			adapter = new Myadapter();
 			mListView.setAdapter(adapter);
+		
 			Log.i("ListViewcount", carList.size() + "");
 			for (int i = 0; i < carList.size(); i++) {
 
@@ -172,7 +176,9 @@ public class BuyAndInfoActivity extends Activity implements
 				holder.tvPrice = (TextView) view.findViewById(R.id.tv_money);
 				holder.tvNum = (TextView) view.findViewById(R.id.tv_num2);
 				holder.tvDate = (TextView) view.findViewById(R.id.tv_date2);
-				holder.ibdelete = (ImageButton) view
+				holder.ibplus=(ImageButton)view.findViewById(R.id.ib_plus);
+				holder.ibsub=(ImageButton)view.findViewById(R.id.ib_sub);
+				holder.ibdelete = (Button) view
 						.findViewById(R.id.ib_delete);
 				holder.ibdelete.setTag(position);
 				view.setTag(holder);
@@ -182,7 +188,7 @@ public class BuyAndInfoActivity extends Activity implements
 			holder.tvName.setText(productList.get(position).name);
 			holder.tvPrice.setText("￥ " + productList.get(position).price
 					* carList.get(position).qty);
-			holder.tvNum.setText(carList.get(position).qty + "件");
+			holder.tvNum.setText(carList.get(position).qty +"");
 			holder.tvDate.setText(carList.get(position).pickupDate);
 			new ImageFetcher().fetch(
 					HttpHelper.DOMAIN_URL_IMAGE2
@@ -192,13 +198,27 @@ public class BuyAndInfoActivity extends Activity implements
 					HttpHelper.DOMAIN_URL_IMAGE2
 							+ colorList.get(position).colorImage + ".jpg",
 					holder.ivcolor);
+			if(flag==1){
+				holder.ibdelete.setVisibility(View.VISIBLE);
+				holder.ibplus.setVisibility(View.VISIBLE);
+				holder.ibsub.setVisibility(View.VISIBLE);
+			}else if(flag==0){
+				holder.ibdelete.setVisibility(View.GONE);
+				holder.ibplus.setVisibility(View.GONE);
+				holder.ibsub.setVisibility(View.GONE);
+				
+			}
+			
 			holder.ibdelete.setOnClickListener(BuyAndInfoActivity.this);
+			
+			ibEdit.setOnClickListener(BuyAndInfoActivity.this);
 
 			return view;
 		}
 
 		class ViewHolder {
-			private ImageButton ibdelete;
+			private ImageButton ibsub,ibplus;
+			private Button ibdelete;
 			private ImageView ivprotuct, ivcolor;
 			private TextView tvName, tvPrice, tvNum, tvDate;
 		}
@@ -214,9 +234,9 @@ public class BuyAndInfoActivity extends Activity implements
 
 	@Override
 	public void onClick(View v) {
-		Carposition = (Integer) (v.getTag());
 		switch (v.getId()) {
 		case R.id.ib_delete:
+			Carposition = (Integer) (v.getTag());
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("X-Bionic").setMessage("从购物车删除此商品？");
 			builder.setPositiveButton("确定", new OnClickListener() {
@@ -229,7 +249,18 @@ public class BuyAndInfoActivity extends Activity implements
 			}).setNegativeButton("取消", null).create().show();
 
 			break;
-
+		case R.id.ib_write:
+			Log.i("bbbbbbb", flag+"");
+			if(flag==0){
+				flag=1;
+			}else {
+				flag =0;
+			}
+			
+			if (adapter != null) {
+				adapter.notifyDataSetChanged();
+			}
+			break;
 		default:
 			break;
 		}

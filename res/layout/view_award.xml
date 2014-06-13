@@ -9,7 +9,7 @@
         android:layout_height="70dp"
         android:layout_margin="7dp"
         android:contentDescription="@null"
-        
+        android:layout_gravity="center"
         android:src="@drawable/head" />
 
     <LinearLayout
@@ -17,6 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="7dp"
         android:gravity="center"
+                android:layout_gravity="center"
+        
         android:orientation="vertical" >
 
         <TextView

@@ -5,19 +5,20 @@
     android:background="@drawable/allbackground"
     android:orientation="horizontal" >
 
-    <ImageButton
+    <Button
         android:id="@+id/ib_delete"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:src="@drawable/remove_icon" />
+        android:background="@drawable/remove_icon"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/iv_product"
-        android:layout_width="80dp"
-        android:layout_height="110dp"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
         android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@+id/ib_delete"
@@ -89,24 +90,61 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="@+id/tv_color"
-            android:layout_below="@+id/tv_color"
+            android:layout_below="@+id/iv_color"
             android:layout_marginTop="10dp"
             android:text="数量："
             android:textColor="#ffffff"
             android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/ib_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="@+id/tv_money"
+            android:layout_below="@+id/iv_color"
+            android:layout_toRightOf="@+id/tv_num"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/left_icon" 
+              android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_num2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="@+id/tv_money"
-            android:layout_below="@+id/tv_color"
+            android:layout_below="@+id/iv_color"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/ib_sub"
+            android:gravity="center"
+            android:text="1111"
+            android:textColor="#D40003"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/ib_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="@+id/tv_money"
+            android:layout_below="@+id/iv_color"
+                        android:layout_marginTop="5dp"
+            
+            android:layout_toRightOf="@+id/tv_num2"
+            android:background="@drawable/right_icon"
+            android:visibility="gone" />
+        
+         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_color"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/tv_num"
-            android:text="1111"
+            android:layout_toRightOf="@+id/ib_plus"
+            android:text="件"
             android:textColor="#FFA329"
             android:textSize="16sp" />
+        
 
         <TextView
             android:id="@+id/tv_date"
@@ -118,18 +156,17 @@
             android:text="添加时间："
             android:textColor="#ffffff"
             android:textSize="14sp" />
-        
+
         <TextView
             android:id="@+id/tv_date2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_date"
             android:layout_below="@+id/tv_num"
             android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/tv_date"
             android:text="dsfaasdf："
             android:textColor="#FFA329"
             android:textSize="14sp" />
-        
     </RelativeLayout>
 
 </RelativeLayout>

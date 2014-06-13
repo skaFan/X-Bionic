@@ -570,11 +570,38 @@ public class ProductDetailFragment extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.bt_buy:
+			if (colorId == 98765 || SizeId == 98765
+			|| etNum.getText().toString() == null
+			|| etNum.getText().toString().equals("")
+			|| Integer.valueOf(etNum.getText().toString()) > haveNum) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(
+				thisActivity);
+		builder.setTitle("X-Bionic").setMessage("请输入正确的商品信息")
+				.setPositiveButton("确定", null).create().show();
+
+	} else {
+		if (ConnectivityUtil.isOnline(getActivity())) {
+			new AddToCar().execute(productQuantityId);
 			Intent intent = new Intent(thisActivity, BuyAndInfoActivity.class);
 			intent.putExtra("productId", id);
 			intent.putExtra("colorId", colorId);
 			intent.putExtra("SizeId", SizeId);
 			startActivity(intent);
+		}
+
+		else {
+			AlertDialog.Builder builder = new AlertDialog.Builder(
+					getActivity());
+			builder.setTitle("X-bionic").setMessage("网络不可用")
+					.setPositiveButton("确定", null).create().show();
+		}
+	}
+			
+//			Intent intent = new Intent(thisActivity, BuyAndInfoActivity.class);
+//			intent.putExtra("productId", id);
+//			intent.putExtra("colorId", colorId);
+//			intent.putExtra("SizeId", SizeId);
+//			startActivity(intent);
 			break;
 		case R.id.tv_addtocar:
 			if (colorId == 98765 || SizeId == 98765
